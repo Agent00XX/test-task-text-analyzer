@@ -1,0 +1,65 @@
+@use 'styles' as *;
+@use 'styles/reset.scss';
+@use 'styles/breakpoints.scss' as breakpoints;
+@import url("https://fonts.googleapis.com/css?family=Nunito:600,700&display=swap");
+
+body {
+  background-size: cover;
+  background-color: $primary-background;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-1m5i5w0-MuiButtonBase-root-MuiListItemButton-root {
+  margin: 5px;
+  border-radius: 25px;
+  font-weight: bolder;
+  color: grey
+}
+
+.active .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-1m5i5w0-MuiButtonBase-root-MuiListItemButton-root {
+  background: rgba(32, 101, 209, 0.08);
+  color: #2065D1;
+}
+
+.active svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+  color: #2065D1;
+}
+
+.container {
+  width: 100%;
+  max-width: $large-container;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.small-container {
+  width: 100%;
+  max-width: $medium-container;
+  margin: 0 auto;
+  padding: 0 25px;
+  min-height: calc(100vh - 100px);
+  @include breakpoints.devices(sm) {
+    padding: 18px;
+  }
+}
+
+.main-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 70px;
+  @include breakpoints.devices(sm) {
+    margin-top: 15px;
+  }
+}
