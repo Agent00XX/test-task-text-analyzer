@@ -6,6 +6,14 @@ export const countWords = (text) => {
   return filteringSpaces
 }
 
+export const differentWords = (text) => {
+  const words = text.toLowerCase().split(/\W+/);
+  const commonWords = ["a", "an", "the", "and", "or", "but", "is", "are", "was", "were", "on", "in", "at", "to", "for", "with", "from", "by"];
+  const uniqueWords = words.filter(word => !commonWords.includes(word));
+
+  return uniqueWords;
+}
+
 export const wordCountExcludingCommonWords = (text) => {
   const commonWords = ['the', 'and', 'or', 'is', 'are', 'a', 'an', 'in', 'on', 'of'];
   const cleanedText = text.replace(/[^\w\s]/g, '').toLowerCase();

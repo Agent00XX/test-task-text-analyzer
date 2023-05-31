@@ -1,7 +1,7 @@
 import axios from "axios";
 import { errorToast } from "./ToastHelper";
 
-const API_URL = "http://localhost:8080/";
+export const API_URL = "http://localhost:8080/";
 let source = axios.CancelToken.source();
 
 const instance = axios.create({

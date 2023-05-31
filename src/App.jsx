@@ -4,7 +4,7 @@ import {
 	Navigate,
 	RouterProvider,
 } from "react-router-dom";
-import { useContext} from "react";
+import { useContext, useEffect, useRef} from "react";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ErrorPage from "./components/ErrorPage";
@@ -50,6 +50,35 @@ const authRouter = createBrowserRouter([
 
 function App() {
 	const authCtx = useContext(AuthContext);
+
+	const logoutTimerRef = useRef(null);
+
+  // Function to handle user activity
+  const handleUserActivity = () => {
+		if(authCtx.isAuthenticated){
+
+			clearTimeout(logoutTimerRef.current); 
+			
+			logoutTimerRef.current = setTimeout(() => {
+				authCtx.logout()
+				console.log('User logged out due to inactivity');
+			}, 2 * 60 * 1000);
+		}
+  };
+
+  useEffect(() => {
+		
+    const resetTimerOnUserActivity = () => handleUserActivity();
+
+    document.addEventListener('mousemove', resetTimerOnUserActivity);
+    document.addEventListener('keydown', resetTimerOnUserActivity);
+
+    return () => {
+      clearTimeout(logoutTimerRef.current);
+      document.removeEventListener('mousemove', resetTimerOnUserActivity);
+      document.removeEventListener('keydown', resetTimerOnUserActivity);
+    };
+  }, [authCtx.isAuthenticated]);
 
 	return (
 		<div className="App">

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
 import useInput from "../hooks/useInput";
 import axiosInstance from "../utils/AxiosHelper";
-import "../Auth.css";
+import "../Auth.scss";
 
 function SignUp() {
   const authCtx = useContext(AuthContext);

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
 import useInput from "../hooks/useInput";
 import axiosInstance from "../utils/AxiosHelper";
-import "../Auth.css";
+import "../Auth.scss";
 
 function Login() {
 	const authCtx = useContext(AuthContext);
@@ -39,6 +39,7 @@ function Login() {
 		console.log({response});
 		if (response.status === 200) {
 			toast.success("Successfully logged in!");
+			console.log({response})
 			localStorage.setItem("user", response.data);
 			authCtx.login(response.data);
 			navigate("/home");

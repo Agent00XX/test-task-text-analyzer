@@ -48,7 +48,16 @@ li {
   max-width: $medium-container;
   margin: 0 auto;
   padding: 0 25px;
-  min-height: calc(100vh - 100px);
+  @include breakpoints.devices(sm) {
+    padding: 18px;
+  }
+}
+
+.history-container {
+  width: 100%;
+  max-width: $medium-container;
+  margin: 30px auto;
+  padding: 0 25px;
   @include breakpoints.devices(sm) {
     padding: 18px;
   }
